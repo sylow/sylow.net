@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const fun: Array<{ name: string; note: string }> = [
+  { name: 'Family / Friends', note: 'My heart' },
   { name: 'Pickleball', note: 'Obsession' },
   { name: 'Swimming', note: 'Mental health' },
   { name: 'Camping', note: 'Grounding' },
-  { name: 'Friends', note: 'My heart' },
 ]
 </script>
 
