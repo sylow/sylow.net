@@ -1,0 +1,157 @@
+/* ============================================================================
+   WORDY — Component primitives
+   ============================================================================
+   Buttons, inputs, cards, badges, chips — lifted verbatim from the product's
+   app/assets/css/main.css. Load AFTER colors_and_type.css. These are the
+   low-level building blocks; full screens live in the ui_kits/.
+   ========================================================================== */
+
+/* Loading-skeleton bar (homepage + results) */
+@keyframes wordy-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.shimmer-bar {
+  border-radius: 4px;
+  background: linear-gradient(90deg,
+    var(--surface-sunk),
+    color-mix(in srgb, var(--surface-sunk) 50%, var(--bg-elev)),
+    var(--surface-sunk));
+  background-size: 200% 100%;
+  animation: wordy-shimmer 1.4s ease-in-out infinite;
+}
+
+/* ── FORM FIELDS ─────────────────────────────────────────────────────────── */
+.wordy-field { display: grid; gap: 6px; }
+.wordy-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+.wordy-hint  { font-size: 12px; color: var(--text-3); }
+.wordy-error { font-size: 12px; color: var(--danger); }
+
+.wordy-input, .wordy-textarea, .wordy-select {
+  width: 100%;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 0 14px;
+  height: 42px;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.wordy-textarea {
+  height: auto; min-height: 160px; padding: 14px; line-height: 1.7; resize: vertical;
+}
+.wordy-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-2) 50%),
+                    linear-gradient(135deg, var(--text-2) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.wordy-input::placeholder, .wordy-textarea::placeholder {
+  color: var(--text-3); font-style: italic;
+}
+.wordy-input:focus, .wordy-textarea:focus, .wordy-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+.wordy-input.is-invalid, .wordy-textarea.is-invalid { border-color: var(--danger); }
+
+/* ── BUTTONS ─────────────────────────────────────────────────────────────── */
+.wordy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: var(--r-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  text-decoration: none;
+}
+.wordy-btn--primary   { background: var(--accent); color: var(--text-on-accent); }
+.wordy-btn--primary:hover  { background: var(--accent-hover); }
+.wordy-btn--primary:active { background: var(--accent-press); }
+.wordy-btn--primary:disabled { background: var(--accent); opacity: 0.5; cursor: not-allowed; }
+.wordy-btn--secondary { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
+.wordy-btn--secondary:hover { border-color: var(--text-2); }
+.wordy-btn--ghost     { background: transparent; color: var(--text-2); }
+.wordy-btn--ghost:hover { color: var(--text); }
+.wordy-btn--lg   { height: 48px; font-size: 15px; padding: 0 22px; }
+.wordy-btn--full { width: 100%; }
+.wordy-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus-ring); }
+
+/* ── CARD ────────────────────────────────────────────────────────────────── */
+.wordy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+/* ── BADGE / CHIP ────────────────────────────────────────────────────────── */
+.wordy-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: var(--r-pill);
+  background: var(--surface-sunk);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.wordy-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border-strong);
+  font-size: 12.5px;
+  color: var(--text);
+  background: transparent;
+}
+.wordy-chip--muted { color: var(--text-2); }
+
+/* ── WORDMARK ────────────────────────────────────────────────────────────── */
+.wordy-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  text-decoration: none;
+}
+.wordy-wordmark-text {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.wordy-wordmark-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateY(-7px);
+}

@@ -1,0 +1,287 @@
+/* ============================================================================
+   WORDY — Colors & Type
+   ============================================================================
+   The single source of truth for Wordy's visual foundations. Lifted verbatim
+   from the product's app/assets/css/tokens.css + main.css and extended with
+   semantic typographic roles (h1, h2, body, code …) so design artifacts can
+   use named styles without re-deriving them.
+
+   Wordy is light-first; dark mode is opt-in via [data-theme="dark"].
+   Fonts are Google Fonts (see @import below) — no local font files needed.
+   ----------------------------------------------------------------------------
+   USAGE
+     <link rel="stylesheet" href="colors_and_type.css">
+     <body class="wordy"> … </body>        ← .wordy applies base resets + font
+     <body class="wordy" data-theme="dark"> ← dark mode
+   ========================================================================== */
+
+/* latin-ext */
+
+/* latin */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* ── COLOR TOKENS ─────────────────────────────────────────────────────────
+   Light is default. Surfaces are explicit (bg / surface / border) so cards
+   keep their hairline even on dark backgrounds. Accent is a single
+   slate-indigo — never loud, never a gradient. */
+
+:root, [data-theme="light"] {
+  /* Surfaces — warm off-white, never pure #fff */
+  --bg:            #FAFAF7;
+  --bg-elev:       #F2F1EC;
+  --surface:       #FFFFFF;
+  --surface-sunk:  #F6F5F1;
+
+  /* Borders — hairline, low opacity */
+  --border:        rgba(20, 20, 28, 0.08);
+  --border-strong: rgba(20, 20, 28, 0.16);
+
+  /* Text */
+  --text:          #14141C;
+  --text-2:        #5B5F6B;
+  --text-3:        #9CA0AB;
+  --text-on-accent:#FFFFFF;
+
+  /* Accent — deep forest green, single primary */
+  --accent:        #1B6E50;
+  --accent-hover:  #155A41;
+  --accent-press:  #0F4633;
+  --accent-soft:   #E8F1ED;
+  --focus-ring:    rgba(27, 110, 80, 0.28);
+
+  /* Semantic — muted, not loud */
+  --success:       #3F7A55;
+  --success-soft:  #ECF3EE;
+  --warning:       #A06A1F;
+  --warning-soft:  #F7EFE0;
+  --danger:        #9F3838;
+  --danger-soft:   #F6E8E8;
+
+  /* Shadow — virtually invisible, just enough lift */
+  --shadow-sm: 0 1px 2px rgba(20,20,28,0.04);
+  --shadow-md: 0 4px 16px rgba(20,20,28,0.06);
+}
+
+[data-theme="dark"] {
+  --bg:            #14141C;
+  --bg-elev:       #1A1A24;
+  --surface:       #1C1C26;
+  --surface-sunk:  #181820;
+
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --text:          #ECECF0;
+  --text-2:        #9DA1AD;
+  --text-3:        #5C6070;
+  --text-on-accent:#FFFFFF;
+
+  --accent:        #5DB592;
+  --accent-hover:  #74C4A4;
+  --accent-press:  #4DA081;
+  --accent-soft:   rgba(93, 181, 146, 0.12);
+  --focus-ring:    rgba(93, 181, 146, 0.35);
+
+  --success:       #6FA384;
+  --success-soft:  rgba(111, 163, 132, 0.12);
+  --warning:       #C99858;
+  --warning-soft:  rgba(201, 152, 88, 0.12);
+  --danger:        #C97474;
+  --danger-soft:   rgba(201, 116, 116, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* ── TYPE FAMILIES, SPACING, RADII, LAYOUT ───────────────────────────────── */
+:root {
+  --font-sans:  'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Source Serif Pro', Georgia, serif;
+  --font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Spacing — 4px base */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+  --s-5: 20px;  --s-6: 24px;  --s-8: 32px;  --s-10: 40px;
+  --s-12: 48px; --s-16: 64px; --s-20: 80px;
+
+  /* Radii */
+  --r-sm: 4px;   --r-md: 6px;   --r-lg: 8px;   --r-pill: 999px;
+
+  /* Layout */
+  --content-max: 720px;   /* prose / lookup column        */
+  --app-max: 1040px;      /* dashboard / app columns      */
+  --site-max: 1120px;     /* nav + footer outer bound     */
+  --nav-h: 64px;
+}
+
+/* ── BASE RESETS (scoped to .wordy) ──────────────────────────────────────── */
+.wordy {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'cv11';
+}
+.wordy *, .wordy *::before, .wordy *::after { box-sizing: border-box; }
+.wordy a:not([class]) { color: var(--accent); text-decoration: none; }
+.wordy a:not([class]):hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ============================================================================
+   SEMANTIC TYPOGRAPHY ROLES
+   ----------------------------------------------------------------------------
+   Wordy's type system has three voices:
+     · SERIF  (Instrument Serif)  — display: page titles, the word itself, big
+                                     numbers. Always weight 400; italics carry
+                                     emphasis & accent color.
+     · SANS   (Space Grotesk)     — UI & body copy, buttons, labels, body prose.
+     · MONO   (JetBrains Mono)    — micro-labels, eyebrows, IPA, metadata,
+                                     footer nav. Uppercase + tracked.
+   Use these classes OR the raw vars. All sizes are the product's real values.
+   ========================================================================== */
+
+/* Display / headings — Instrument Serif, weight 400, tight tracking */
+.wordy-display {            /* hero title (homepage, about) */
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 6vw, 56px);
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.wordy-h1 {                 /* page title (dashboard, pricing) */
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 5vw, 44px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.wordy-h2 {                 /* section title */
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 3.5vw, 32px);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.wordy-h3 {                 /* card / feature title */
+  font-family: var(--font-serif);
+  font-size: 26px;
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: -0.014em;
+  color: var(--text);
+}
+/* Serif emphasis: italic + accent — the one place Wordy adds color to type */
+.wordy-display em, .wordy-h1 em, .wordy-h2 em, .wordy-h3 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* Body copy — Space Grotesk */
+.wordy-lead {               /* sub-headline under a title */
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.wordy-body {               /* default paragraph */
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--text);
+}
+.wordy-prose {              /* long-form reading (about, terms) */
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.wordy-small {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* Mono micro-label — uppercase, tracked. Eyebrows, metadata, footer nav. */
+.wordy-label-mono, .label-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  font-weight: 500;
+}
+/* IPA / inline code — mono, not uppercased */
+.wordy-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* Hairline divider */
+.wordy-hr, .hr-soft {
+  height: 1px;
+  background: var(--border);
+  border: 0;
+  margin: 0;
+}
