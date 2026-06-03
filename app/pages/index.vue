@@ -2,9 +2,9 @@
 import { PROJECTS } from '~/data/projects'
 
 useSeoMeta({
-  title: 'Sylow — Gökhan Arlı · Independent engineer & architect',
+  title: 'Freelance engineer & system architect — Gökhan Arlı (Sylow)',
   description:
-    'I take your project from zero to one hundred. Developer, system architect and troubleshooter for startups — Rails, Vue/Nuxt, APIs. Sylow, since 2003.',
+    'Hand me your project spec — I build and ship it. Rails, Vue/Nuxt, APIs for startups, taking ideas the rest of the distance.',
   ogImage: 'https://sylow.net/og.png',
 })
 
