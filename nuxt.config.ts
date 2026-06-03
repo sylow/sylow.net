@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-01-01',
   future: { compatibilityVersion: 4 },
 
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/sitemap', '@nuxtjs/robots', '@vercel/analytics/nuxt'],
 
   css: ['~/assets/css/tokens.css', '~/assets/css/components.css', '~/assets/css/site.css'],
 
