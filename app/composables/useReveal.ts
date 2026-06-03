@@ -12,8 +12,11 @@ export function useReveal() {
           io.unobserve(en.target)
         }
       })
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' })
+    }, { threshold: 0, rootMargin: '0px 0px -5% 0px' })
     els.forEach((e) => io.observe(e))
-    onBeforeUnmount(() => io.disconnect())
+    const safety = window.setTimeout(() => {
+      els.forEach((e) => e.classList.add('in'))
+    }, 1500)
+    onBeforeUnmount(() => { io.disconnect(); window.clearTimeout(safety) })
   })
 }

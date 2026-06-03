@@ -173,12 +173,13 @@
 /* Timeline — featured (Wordy) */
 .tl-item--feature { padding-bottom: 44px; }
 .tl-item--feature::before { width: 13px; height: 13px; left: -28px; top: 22px; }
-.tl-feature { position: relative; isolation: isolate; overflow: hidden; margin-top: 2px;
+.tl-feature { position: relative; overflow: hidden; margin-top: 2px;
   padding: 26px 28px 28px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
   border-radius: 16px; box-shadow: 0 14px 40px -28px var(--accent); transition: transform 200ms, border-color 200ms; }
+.tl-feature > * { position: relative; z-index: 1; }
 .tl-feature:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--border-strong)); }
-.tl-feature-glow { position: absolute; inset: auto -15% -55% auto; width: 46%; aspect-ratio: 1; z-index: -1;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 60%); opacity: 0.12; filter: blur(46px); }
+.tl-feature-glow { position: absolute; inset: auto -15% -55% auto; width: 46%; height: 0; padding-bottom: 46%; z-index: 0;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 60%); opacity: 0.12; filter: blur(46px); pointer-events: none; }
 .tl-feature-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .tl-feature-visit { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent); text-decoration: none; }
 .tl-feature-visit:hover { color: var(--accent-hover); }
@@ -194,8 +195,9 @@
 @media (min-width: 760px) { .work-cards { grid-template-columns: 1fr 1fr; } }
 .pcard { display: flex; flex-direction: column; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-sm); transition: border-color 200ms, transform 200ms, box-shadow 200ms; }
 .pcard:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 35%, var(--border-strong)); }
-.pcard--feature { grid-column: 1 / -1; position: relative; isolation: isolate; overflow: hidden; background: var(--surface); border-color: color-mix(in srgb, var(--accent) 28%, var(--border)); }
-.pcard--feature .pcard-glow { position: absolute; inset: auto -20% -60% auto; width: 50%; aspect-ratio: 1; z-index: -1; background: radial-gradient(circle, var(--accent) 0%, transparent 60%); opacity: 0.12; filter: blur(50px); }
+.pcard--feature { grid-column: 1 / -1; position: relative; overflow: hidden; background: var(--surface); border-color: color-mix(in srgb, var(--accent) 28%, var(--border)); }
+.pcard--feature > * { position: relative; z-index: 1; }
+.pcard--feature .pcard-glow { position: absolute; inset: auto -20% -60% auto; width: 50%; height: 0; padding-bottom: 50%; z-index: 0; background: radial-gradient(circle, var(--accent) 0%, transparent 60%); opacity: 0.12; filter: blur(50px); pointer-events: none; }
 .pcard-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .pcard-year { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
 .pcard-client { margin: 0 0 8px; font-family: var(--font-serif); font-size: 26px; line-height: 1.1; font-weight: 400; letter-spacing: -0.012em; color: var(--text); }
