@@ -4,7 +4,7 @@ import { SERVICES } from '~/data/services'
 
 <template>
   <div class="wrap">
-    <SectionHead num="01" eyebrow="What I do">
+    <SectionHead eyebrow="What I do">
       Four ways I earn my keep on a <em>team.</em>
     </SectionHead>
     <div class="svc-grid">

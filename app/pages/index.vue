@@ -29,7 +29,6 @@ const onNav = (id: string) => scrollToId(id)
       <section class="section reveal" id="work" style="scroll-margin-top: 72px;">
         <div class="wrap">
           <SectionHead
-            num="02"
             eyebrow="Selected work"
             lead="Twenty years of taking projects the rest of the distance — my own product, startup builds, and a lot of Rails brought back to life."
           >

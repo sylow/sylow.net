@@ -14,7 +14,6 @@ const sprintPoints = [
 <template>
   <div class="wrap">
     <SectionHead
-      num="04"
       eyebrow="Ways to work"
       lead="Two ways to engage, depending on where your project is. Both end with something real shipped — and we agree the terms before I start."
     >

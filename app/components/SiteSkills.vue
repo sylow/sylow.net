@@ -5,7 +5,6 @@ import { SKILLS } from '~/data/skills'
 <template>
   <div class="wrap">
     <SectionHead
-      num="03"
       eyebrow="Toolbox"
       lead="The stack I reach for. Backend is home; I cross the full stack when a project needs one person who can."
     >

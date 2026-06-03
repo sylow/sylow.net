@@ -1,10 +1,15 @@
 <script setup lang="ts">
-const fun = ['Pickleball', 'Swimming', 'Bridge', 'Hiking', 'Thailand']
+const fun: Array<{ name: string; note: string }> = [
+  { name: 'Pickleball', note: 'Obsession' },
+  { name: 'Swimming', note: 'Mental health' },
+  { name: 'Camping', note: 'Grounding' },
+  { name: 'Friends', note: 'My heart' },
+]
 </script>
 
 <template>
   <div class="wrap">
-    <SectionHead num="05" eyebrow="About me">
+    <SectionHead eyebrow="About me">
       A developer who likes playing <em>detective.</em>
     </SectionHead>
     <div class="about-grid">
@@ -19,25 +24,26 @@ const fun = ['Pickleball', 'Swimming', 'Bridge', 'Hiking', 'Thailand']
           and isn't afraid to be honest with them.
         </p>
         <p>
-          I'm grateful that remote work lets me live between Thailand, the Netherlands and
-          Türkiye — and still ship with teams anywhere.
+          I'm grateful that remote work lets me move between Türkiye, the Netherlands and
+          Thailand — and still ship with teams anywhere.
         </p>
       </div>
       <aside class="about-side">
         <div class="about-card">
-          <div class="about-card-label">Based between</div>
+          <div class="about-card-label">On the move</div>
           <div class="places">
-            <div class="place"><span class="place-name">Thailand</span><span class="place-note">Base</span></div>
-            <div class="place"><span class="place-name">Netherlands</span><span class="place-note">Roots</span></div>
-            <div class="place"><span class="place-name">Türkiye</span><span class="place-note">Home</span></div>
+            <div class="place"><span class="place-name">Türkiye</span><span class="place-note">Origin</span></div>
+            <div class="place"><span class="place-name">Netherlands</span><span class="place-note">Career</span></div>
+            <div class="place"><span class="place-name">Thailand</span><span class="place-note">Home</span></div>
           </div>
         </div>
         <div class="about-card">
           <div class="about-card-label">Away from the keyboard</div>
-          <div class="fun-chips">
-            <span v-for="f in fun" :key="f" class="fun-chip">
-              <span class="fun-chip-dot" />{{ f }}
-            </span>
+          <div class="places">
+            <div v-for="f in fun" :key="f.name" class="place">
+              <span class="place-name">{{ f.name }}</span>
+              <span class="place-note">{{ f.note }}</span>
+            </div>
           </div>
         </div>
       </aside>
