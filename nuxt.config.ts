@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tokens.css', '~/assets/css/components.css', '~/assets/css/site.css'],
 
   site: {
-    url: 'https://sylow.net',
+    url: 'https://www.sylow.net',
     name: 'Sylow — Gökhan Arlı',
     description:
       'I take your project from zero to one hundred. Developer, system architect and troubleshooter for startups — Rails, Vue/Nuxt, APIs. Sylow, since 2003.',

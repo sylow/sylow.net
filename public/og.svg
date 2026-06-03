@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="0.18" cy="0.22" r="0.8">
+      <stop offset="0%" stop-color="#1B6E50" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#1B6E50" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#1B6E50" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#FAFAF7"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top wordmark -->
+  <g transform="translate(80, 96)">
+    <text x="0" y="0"
+          font-family="Space Grotesk, -apple-system, system-ui, sans-serif"
+          font-weight="700"
+          font-size="34"
+          letter-spacing="2"
+          fill="#14141C">SYLOW</text>
+    <circle cx="123" cy="-23" r="5" fill="#1B6E50"/>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="80" y="262"
+        font-family="JetBrains Mono, ui-monospace, monospace"
+        font-size="20"
+        letter-spacing="3"
+        fill="#5B5F6B">FREELANCE  ·  SINCE 2003</text>
+
+  <!-- Headline (serif, with italic accent on the last word) -->
+  <text x="80" y="360"
+        font-family="Instrument Serif, Georgia, serif"
+        font-size="92"
+        fill="#14141C">Gökhan Arlı —</text>
+
+  <text x="80" y="460"
+        font-family="Instrument Serif, Georgia, serif"
+        font-size="92"
+        fill="#14141C">engineer, <tspan font-style="italic" fill="#1B6E50">system architect.</tspan></text>
+
+  <!-- Sub -->
+  <text x="80" y="538"
+        font-family="Space Grotesk, -apple-system, system-ui, sans-serif"
+        font-size="26"
+        fill="#5B5F6B">From zero to one hundred — Rails, Vue/Nuxt, APIs for startups.</text>
+
+  <!-- Bottom-right URL -->
+  <text x="1120" y="568"
+        text-anchor="end"
+        font-family="JetBrains Mono, ui-monospace, monospace"
+        font-size="20"
+        letter-spacing="2"
+        fill="#5B5F6B">sylow.net</text>
+
+  <!-- Hairline bottom border -->
+  <rect x="0" y="628" width="1200" height="2" fill="#1B6E50"/>
+</svg>
