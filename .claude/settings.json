@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run typecheck)",
+      "Bash(npx nuxt prepare)",
+      "Bash(npx nuxt typecheck)"
+    ]
+  }
+}
