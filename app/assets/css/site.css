@@ -39,6 +39,9 @@
 .page { flex: 1; }
 .wrap { max-width: var(--content-max); margin: 0 auto; padding-left: 32px; padding-right: 32px; }
 .wrap-wide { max-width: 980px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+@media (max-width: 560px) {
+  .wrap, .wrap-wide { padding-left: 18px; padding-right: 18px; }
+}
 .section { padding-top: 80px; }
 .section + .section { padding-top: 96px; }
 
