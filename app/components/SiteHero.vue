@@ -4,7 +4,7 @@ import { PROJECTS } from '~/data/projects'
 const emit = defineEmits<{ nav: [id: string] }>()
 
 const projectsShipped = PROJECTS.length
-const yearSpan = '2003 — now'
+const industriesServed = '8+'
 const railsRange = (() => {
   const versions = PROJECTS.flatMap((p) => p.stack)
     .map((s) => /Rails\s*(\d+(?:\.\d+)?)/.exec(s)?.[1])
@@ -61,15 +61,15 @@ const railsRange = (() => {
         <dd class="hero-stat-label">Rescued &amp; upgraded</dd>
       </div>
       <div class="hero-stat">
-        <dt class="hero-stat-num">{{ yearSpan }}</dt>
-        <dd class="hero-stat-label">Selected work</dd>
+        <dt class="hero-stat-num">{{ industriesServed }}</dt>
+        <dd class="hero-stat-label">Industries served</dd>
       </div>
     </dl>
 
     <div class="hero-meta">
       <span>Rails + Vue/Nuxt</span>
       <span>One-person team</span>
-      <span>Thailand · NL · Türkiye</span>
+      <span>Türkiye · Netherlands · Thailand</span>
     </div>
   </section>
 </template>
