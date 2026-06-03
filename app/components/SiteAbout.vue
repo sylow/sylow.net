@@ -10,13 +10,14 @@ const fun: Array<{ name: string; note: string }> = [
 <template>
   <div class="wrap">
     <SectionHead eyebrow="About me">
-      A developer who likes playing <em>detective.</em>
+      One person, whole project — or the <em>fix</em> when it breaks.
     </SectionHead>
     <div class="about-grid">
       <div class="about-prose">
         <p>
-          I'm a developer, system architect and troubleshooter — and it's the last role I
-          love most. Tracking down what's really wrong makes me feel like a <em>detective.</em>
+          I'm happiest building what a client dreams up — turning an idea into something that
+          ships. When things break, I like the second role too: tracking down what's really
+          wrong makes me feel like a <em>detective.</em>
         </p>
         <p>
           I do my best work on projects with passionate teams that meet daily and talk openly.
