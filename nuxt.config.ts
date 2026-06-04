@@ -34,6 +34,15 @@ export default defineNuxtConfig({
     preset: 'vercel',
   },
 
+  runtimeConfig: {
+    public: {
+      // Contact form endpoint. Override locally with NUXT_PUBLIC_FORMS_ENDPOINT
+      // (e.g. http://localhost:3013/api/v1/forms/sylow.net/contact when
+      // running the Rails API on your laptop).
+      formsEndpoint: 'https://api.sylow.net/api/v1/forms/sylow.net/contact',
+    },
+  },
+
   typescript: {
     strict: true,
   },

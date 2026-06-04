@@ -13,7 +13,8 @@ const parts = computed(() => {
   }
 })
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqeozgwz'
+const runtimeConfig = useRuntimeConfig()
+const FORM_ENDPOINT = runtimeConfig.public.formsEndpoint
 const MIN_NAME = 2
 const MIN_MESSAGE = 20
 const MIN_SECONDS_ON_PAGE = 3
@@ -115,14 +116,13 @@ async function submit() {
   status.value = 'submitting'
   errorMsg.value = ''
   try {
-    const res = await fetch(FORMSPREE_ENDPOINT, {
+    const res = await fetch(FORM_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         name: form.name.trim(),
         email: form.email.trim(),
         message: form.message.trim(),
-        _subject: `sylow.net — new enquiry from ${form.name.trim() || form.email.trim()}`,
       }),
     })
     if (res.ok) {
@@ -141,7 +141,7 @@ async function submit() {
       return
     }
     const data = await res.json().catch(() => null)
-    errorMsg.value = data?.errors?.[0]?.message || 'Something went wrong. Please email me directly.'
+    errorMsg.value = data?.error?.message || 'Something went wrong. Please email me directly.'
     status.value = 'error'
   } catch {
     errorMsg.value = 'Network error. Please email me directly.'
