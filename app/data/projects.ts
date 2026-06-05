@@ -44,6 +44,14 @@ export const PROJECTS: Project[] = [
     stack: ['Nuxt 3', 'Rails 7 API', 'Client-side encryption', 'Healthcare'],
   },
   {
+    era: 'current', now: true, client: 'Sylow Redesign',
+    role: 'Nuxt 4 · Rails 8 API · Vercel · DigitalOcean',
+    summary: 'Rebuilt my own site on Nuxt 4, with a small Rails API powering its contact form.',
+    body: "Rebuilt sylow.net from scratch on Nuxt 4 with TypeScript and Vercel, then stood up a separate Rails 8 API to receive contact-form submissions from all my web sites. The API stores each submission as a generic JSON document and has spam protection in place. Every real submission pings me on Telegram within a second so I can reply quickly without checking a dashboard. Kamal handles zero-downtime deploys.",
+    link: 'https://www.sylow.net',
+    stack: ['Nuxt 4', 'Rails 8', 'PostgreSQL', 'Kamal', 'DigitalOcean', 'Vercel', 'Telegram Bot API'],
+  },
+  {
     era: 'current', now: true, client: 'Toptal · Legacy Rails rescue',
     role: 'Modernisation · Rails & Ruby upgrade',
     summary: "Heroku stopped building it, and nobody on the team knew the code.",
