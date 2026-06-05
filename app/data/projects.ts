@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
     stack: ['Nuxt 4', 'Rails 8', 'PostgreSQL', 'Kamal', 'DigitalOcean', 'Vercel', 'Telegram Bot API'],
   },
   {
-    era: 'current', now: true, client: 'Toptal · Legacy Rails rescue',
+    era: 'earlier', client: 'Toptal · Legacy Rails rescue',
     role: 'Modernisation · Rails & Ruby upgrade',
     summary: "Heroku stopped building it, and nobody on the team knew the code.",
     body: "A classic legacy-rescue: Heroku had retired the Ruby version this project ran on, the original team had moved on, and the codebase wasn't deployable any more. I brought Rails and Ruby up to current, pulled unnecessary micro-services back into the monolith where they belonged, and dropped the fragile third-party dependencies that were doing more harm than good. Left it deployable, readable, and maintainable for whoever comes next.",
