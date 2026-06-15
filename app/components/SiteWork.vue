@@ -22,6 +22,9 @@ import { PROJECTS, ERA_LABEL, linkLabel } from '~/data/projects'
         <div class="tl-feature-role">{{ p.role }}</div>
         <p class="tl-feature-body">{{ p.body }}</p>
         <ChipStack :items="p.stack" />
+        <NuxtLink v-if="p.slug" class="tl-case-link" :to="`/work/${p.slug}`">
+          Read case study <AppIcon name="arrowRight" :size="14" :sw="2" />
+        </NuxtLink>
       </article>
       <template v-else>
         <div class="tl-year">{{ ERA_LABEL[p.era] }}</div>
@@ -32,6 +35,9 @@ import { PROJECTS, ERA_LABEL, linkLabel } from '~/data/projects'
         <p class="tl-body">{{ p.body }}</p>
         <ProjLink v-if="p.link" :href="p.link" />
         <ChipStack :items="p.stack" />
+        <NuxtLink v-if="p.slug" class="tl-case-link" :to="`/work/${p.slug}`">
+          Read case study <AppIcon name="arrowRight" :size="14" :sw="2" />
+        </NuxtLink>
       </template>
     </div>
   </div>
