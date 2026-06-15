@@ -30,6 +30,15 @@ export default defineNuxtConfig({
     ],
   },
 
+  sitemap: {
+    urls: [{ loc: '/', changefreq: 'monthly', priority: 1.0 }],
+  },
+
+  robots: {
+    allow: '/',
+    sitemap: 'https://www.sylow.net/sitemap.xml',
+  },
+
   nitro: {
     preset: 'vercel',
   },
