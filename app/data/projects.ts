@@ -16,6 +16,9 @@ export type Project = {
   body: string
   link?: string
   stack: string[]
+  // Featured-card badge text. Defaults to 'Now · my product' when unset; set
+  // it to e.g. 'In progress · my product' for work that isn't live yet.
+  badge?: string
   // Set a slug to publish a dedicated /work/<slug> case-study page for this
   // project. Projects without a slug stay on the homepage timeline only.
   slug?: string
@@ -35,48 +38,8 @@ export type CaseStudy = {
 // Selected work — newest first. `now` flags current/featured work.
 export const PROJECTS: Project[] = [
   {
-    era: 'current', now: true, client: 'JobsCraftman', slug: 'jobscraftman',
-    role: 'Rails 8 + Nuxt 4 · Claude · coming soon',
-    summary: 'An AI job-search coach — interview practice, cover letters and CV building in one place.',
-    body: "In active development: a single tool for the whole job hunt. Practice interviews at the difficulty you choose and get scored, per-question feedback; generate and refine tailored cover letters; build an ATS-friendly CV and score it against a real job description. Claude powers the coaching; a Rails 8 API and a credit ledger keep the cost of all that AI honest. Built solo, launching soon.",
-    stack: ['Rails 8', 'Nuxt 4', 'Claude Sonnet 4.6', 'Claude Haiku 4.5', 'Prawn'],
-    caseStudy: {
-      tagline:
-        'An AI coach for the whole job hunt — interview practice, cover letters and CV building in one place. Built solo on Rails 8 and Nuxt 4, launching soon.',
-      facts: [
-        ['Status', 'In active development — launching soon'],
-        ['Role', 'Solo — product, design, frontend, backend, ops'],
-        ['Frontend', 'Nuxt 4 · Vue 3 · TypeScript on Vercel'],
-        ['Backend', 'Rails 8 API-only · PostgreSQL · Puma'],
-        ['AI', 'Claude Sonnet 4.6 (generation) · Haiku 4.5 (refinements)'],
-        ['Deploy', 'Kamal 2 to DigitalOcean · managed Postgres'],
-      ],
-      sections: [
-        {
-          heading: 'What it does',
-          body:
-            "JobsCraftman puts the three things a job seeker actually needs into one tool. You can practice an interview — preset questions at easy, medium or hard, or tailored to a role or a pasted job description — and get a score and specific feedback on each answer. You can write a cover letter and refine it with plain-language instructions. And you can build a CV from a reusable profile, get AI suggestions to sharpen it, and score it against a job description for ATS fit.\n\nIt's aimed at active job seekers — early-career, career changers, returners — and it's English at launch, built to add more languages.",
-        },
-        {
-          heading: 'Two models, picked per job',
-          body:
-            "The coaching runs on Claude, but not one model for everything. The expensive, high-quality work — generating an interview with model answers, scoring a CV against a job description — uses Sonnet 4.6. The cheaper, high-frequency work — rewriting a cover-letter line, polishing a CV bullet — uses Haiku 4.5. Matching the model to the job is the difference between a tool that's pleasant to use and one that's too expensive to run.\n\nA whole interview — the question list and a strong answer for each — is generated in a single call and stored, so the user can work through it without burning a request per question. Per-answer feedback is then a small, focused call rather than re-sending the entire transcript.",
-        },
-        {
-          heading: 'Credits, not surprises',
-          body:
-            "AI features cost money on every use, so JobsCraftman runs on an append-only credit ledger rather than ad-hoc metering. Each paid action — generate an interview, improve a CV, score it against a JD — costs a credit; the balance is always the sum of the ledger, never a counter that can drift. Free accounts start with a few credits; the paid tier tops up monthly.\n\nEvery credit spend is wrapped in a transaction with the AI call, so a failed generation rolls the credit back instead of charging for nothing. A per-user daily spend ceiling sits on top as a hard stop, and an ATS score is cached against a hash of the CV and the job description so re-viewing an unchanged result never costs a second credit.",
-        },
-        {
-          heading: 'The foundations',
-          body:
-            "Underneath the AI is the unglamorous work that makes a product trustworthy: JWT auth with per-device sessions, email verification before anything can be spent, rate limiting, a full audit log of every meaningful action, GDPR export and soft-delete, and error tracking wired in from the start. Cover letters and CVs render to PDF server-side with Prawn — pure Ruby, no headless browser.\n\nIt deploys to DigitalOcean with Kamal 2 and a managed Postgres instance, with background jobs and caching both running on Postgres rather than a separate Redis. It's the same zero-to-one-hundred pattern as my other products: I own the product decisions, both halves of the code, and the operational details — here, before the public launch rather than after.",
-        },
-      ],
-    },
-  },
-  {
-    era: 'current', now: true, feature: true, client: 'Wordy', slug: 'wordy',
+    era: 'current', now: true, feature: true, client: 'TryWordy', slug: 'wordy',
+    badge: 'In progress · my product',
     role: 'Rails 8 + Nuxt 4 · Claude · ElevenLabs',
     summary: 'A calm vocabulary lookup & learning tool, built solo.',
     body: "Designed and built end-to-end. Paste a batch of words and get clean cards — definitions, real examples, synonyms you'd actually use, and natural text-to-speech pronunciation. Rails 8 API with a Nuxt 4 frontend; definitions powered by Claude, text-to-speech audio by ElevenLabs. Proof of what 0-to-100 looks like when I run the whole thing.",
@@ -97,7 +60,7 @@ export const PROJECTS: Project[] = [
         {
           heading: 'What it does',
           body:
-            "Paste a batch of words or phrases in any language and Wordy returns clean vocabulary cards — definitions in both your target and native language, part of speech, register, synonyms and antonyms you would actually use, real example sentences, and natural pronunciation you can play back.\n\nThe whole product is built to feel like a well-made tool rather than a consumer app: no gamification, no mascots, no aggressive prompts. Just the lookup, done well.",
+            "Paste a batch of words or phrases in any language and TryWordy returns clean vocabulary cards — definitions in both your target and native language, part of speech, register, synonyms and antonyms you would actually use, real example sentences, and natural pronunciation you can play back.\n\nThe whole product is built to feel like a well-made tool rather than a consumer app: no gamification, no mascots, no aggressive prompts. Just the lookup, done well.",
         },
         {
           heading: 'Definitions: Claude, made reliable',
@@ -117,7 +80,7 @@ export const PROJECTS: Project[] = [
         {
           heading: 'Why it matters',
           body:
-            "Wordy is my proof of what zero-to-one-hundred looks like when I run the whole thing: the product decisions, the design, both halves of the codebase, and the operational details that decide whether an AI product is sustainable or just a demo.",
+            "TryWordy is my proof of what zero-to-one-hundred looks like when I run the whole thing: the product decisions, the design, both halves of the codebase, and the operational details that decide whether an AI product is sustainable or just a demo.",
         },
       ],
     },
@@ -160,6 +123,49 @@ export const PROJECTS: Project[] = [
           heading: 'Export and the rest of the stack',
           body:
             "The finished petition exports as a print-ready PDF (built with pdfmake, with the display fonts embedded so it looks identical everywhere) or as a Word document (built with docx, referencing system fonts so Turkish characters always render). Anonymous users keep their history in the browser; signed-in users get it stored server-side.\n\nUnder the hood: a Rails 8 API on PostgreSQL, JWT auth, IP-based rate limiting, and a per-user monthly quota plus a hard daily spend ceiling on the AI. Every generation — anonymous or not, success or failure — is logged with a hashed IP (never the raw address), token counts and latency, so cost and abuse can be reviewed without storing anyone's personal data. It ships to DigitalOcean with Kamal 2.",
+        },
+      ],
+    },
+  },
+  {
+    era: 'current', now: true, feature: true, client: 'JobCraftsMan', slug: 'jobcraftsman',
+    badge: 'In progress · my product',
+    role: 'Rails 8 + Nuxt 4 · Claude · coming soon',
+    summary: 'An AI job-search coach — interview practice, cover letters and CV building in one place.',
+    body: "In active development: a single tool for the whole job hunt. Practice interviews at the difficulty you choose and get scored, per-question feedback; generate and refine tailored cover letters; build an ATS-friendly CV and score it against a real job description. Claude powers the coaching; a Rails 8 API and a credit ledger keep the cost of all that AI honest. Built solo, launching soon.",
+    link: 'https://jobcraftsman.com',
+    stack: ['Rails 8', 'Nuxt 4', 'Claude Sonnet 4.6', 'Claude Haiku 4.5', 'Prawn'],
+    caseStudy: {
+      tagline:
+        'An AI coach for the whole job hunt — interview practice, cover letters and CV building in one place. Built solo on Rails 8 and Nuxt 4, launching soon.',
+      facts: [
+        ['Status', 'In active development — launching soon'],
+        ['Role', 'Solo — product, design, frontend, backend, ops'],
+        ['Frontend', 'Nuxt 4 · Vue 3 · TypeScript on Vercel'],
+        ['Backend', 'Rails 8 API-only · PostgreSQL · Puma'],
+        ['AI', 'Claude Sonnet 4.6 (generation) · Haiku 4.5 (refinements)'],
+        ['Deploy', 'Kamal 2 to DigitalOcean · managed Postgres'],
+      ],
+      sections: [
+        {
+          heading: 'What it does',
+          body:
+            "JobCraftsMan puts the three things a job seeker actually needs into one tool. You can practice an interview — preset questions at easy, medium or hard, or tailored to a role or a pasted job description — and get a score and specific feedback on each answer. You can write a cover letter and refine it with plain-language instructions. And you can build a CV from a reusable profile, get AI suggestions to sharpen it, and score it against a job description for ATS fit.\n\nIt's aimed at active job seekers — early-career, career changers, returners — and it's English at launch, built to add more languages.",
+        },
+        {
+          heading: 'Two models, picked per job',
+          body:
+            "The coaching runs on Claude, but not one model for everything. The expensive, high-quality work — generating an interview with model answers, scoring a CV against a job description — uses Sonnet 4.6. The cheaper, high-frequency work — rewriting a cover-letter line, polishing a CV bullet — uses Haiku 4.5. Matching the model to the job is the difference between a tool that's pleasant to use and one that's too expensive to run.\n\nA whole interview — the question list and a strong answer for each — is generated in a single call and stored, so the user can work through it without burning a request per question. Per-answer feedback is then a small, focused call rather than re-sending the entire transcript.",
+        },
+        {
+          heading: 'Credits, not surprises',
+          body:
+            "AI features cost money on every use, so JobCraftsMan runs on an append-only credit ledger rather than ad-hoc metering. Each paid action — generate an interview, improve a CV, score it against a JD — costs a credit; the balance is always the sum of the ledger, never a counter that can drift. Free accounts start with a few credits; the paid tier tops up monthly.\n\nEvery credit spend is wrapped in a transaction with the AI call, so a failed generation rolls the credit back instead of charging for nothing. A per-user daily spend ceiling sits on top as a hard stop, and an ATS score is cached against a hash of the CV and the job description so re-viewing an unchanged result never costs a second credit.",
+        },
+        {
+          heading: 'The foundations',
+          body:
+            "Underneath the AI is the unglamorous work that makes a product trustworthy: JWT auth with per-device sessions, email verification before anything can be spent, rate limiting, a full audit log of every meaningful action, GDPR export and soft-delete, and error tracking wired in from the start. Cover letters and CVs render to PDF server-side with Prawn — pure Ruby, no headless browser.\n\nIt deploys to DigitalOcean with Kamal 2 and a managed Postgres instance, with background jobs and caching both running on Postgres rather than a separate Redis. It's the same zero-to-one-hundred pattern as my other products: I own the product decisions, both halves of the code, and the operational details — here, before the public launch rather than after.",
         },
       ],
     },

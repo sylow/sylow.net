@@ -37,9 +37,10 @@ Each project can have its own server-rendered SEO landing page at `/work/<slug>`
 
 ### Published / planned case studies
 All three case studies are **published**. Each copy is grounded in the actual source repo (Rails API in `backend/`, Nuxt in `frontend/`, plus a rich `CLAUDE.md` in each) — re-verify against that codebase before editing any technical claim.
-- **Wordy** (`slug: 'wordy'`, live at trywordy.com) — solo Rails 8 + Nuxt 4 vocabulary tool; Claude Sonnet 4.5 (tool-use JSON, prompt caching), ElevenLabs TTS, Stripe, JWT, Kamal 2 → DigitalOcean. Source: `../../wordy`.
+Two of the three (TryWordy, JobCraftsMan) are my own products and still **in progress** — their featured cards carry an `'In progress · my product'` badge (the `badge?` field on the project; defaults to `'Now · my product'`). They still use `era: 'current'`; "in progress" is conveyed by the badge, not a separate era.
+- **TryWordy** (`client: 'TryWordy'`, `slug: 'wordy'` — URL stays `/work/wordy`, live at trywordy.com) — solo Rails 8 + Nuxt 4 vocabulary tool; Claude Sonnet 4.5 (tool-use JSON, prompt caching), ElevenLabs TTS, Stripe, JWT, Kamal 2 → DigitalOcean. Source: `../../wordy`.
 - **YazbirDilekçe** (`slug: 'yazbirdilekce'`, live at yazbirdilekce.com) — Turkish petition writer; Claude Haiku 4.5 with strict JSON output, server-side Turkish formatting (Turkic uppercase + dative suffixes), PDF via pdfmake + Word via docx, hashed-IP audit trail. Source: `../../dilekce`.
-- **JobsCraftman** (`slug: 'jobscraftman'`, **not yet live** — case study is framed as "coming soon", so the entry has no `link`) — AI job-search coach (interview practice, cover letters, CV/ATS); Claude Sonnet 4.6 + Haiku 4.5, append-only credit ledger, Prawn PDFs, Kamal 2 → DigitalOcean. Stripe is scaffolded but not yet wired — do not claim billing is live. Source: `../../jobscraftman`.
+- **JobCraftsMan** (`slug: 'jobcraftsman'`, in progress — links to jobcraftsman.com) — AI job-search coach (interview practice, cover letters, CV/ATS); Claude Sonnet 4.6 + Haiku 4.5, append-only credit ledger, Prawn PDFs, Kamal 2 → DigitalOcean. Stripe is scaffolded but not yet wired — do not claim billing is live. Source: `../../jobscraftman` (note: the source folder is `jobscraftman`, but the product/brand is **JobCraftsMan** and the domain is **jobcraftsman.com**). Slug updated from the old `jobscraftman`.
 
 ## Commands
 - `npm run dev` — dev server (`localhost:3000`)

@@ -13,7 +13,7 @@ import { PROJECTS, ERA_LABEL, linkLabel } from '~/data/projects'
       <article v-if="p.feature" class="tl-feature">
         <div class="tl-feature-glow" />
         <div class="tl-feature-top">
-          <span class="tagline-now">Now · my product</span>
+          <span class="tagline-now">{{ p.badge ?? 'Now · my product' }}</span>
           <a v-if="p.link" class="tl-feature-visit" :href="p.link" target="_blank" rel="noopener">
             {{ linkLabel(p.link) }} <AppIcon name="arrowUpRight" :size="14" :sw="2" />
           </a>

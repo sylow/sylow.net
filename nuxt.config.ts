@@ -37,7 +37,7 @@ export default defineNuxtConfig({
       { loc: '/', changefreq: 'monthly', priority: 1.0 },
       { loc: '/work/wordy', changefreq: 'monthly', priority: 0.8 },
       { loc: '/work/yazbirdilekce', changefreq: 'monthly', priority: 0.8 },
-      { loc: '/work/jobscraftman', changefreq: 'monthly', priority: 0.8 },
+      { loc: '/work/jobcraftsman', changefreq: 'monthly', priority: 0.8 },
     ],
   },
 
