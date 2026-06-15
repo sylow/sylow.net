@@ -35,6 +35,47 @@ export type CaseStudy = {
 // Selected work — newest first. `now` flags current/featured work.
 export const PROJECTS: Project[] = [
   {
+    era: 'current', now: true, client: 'JobsCraftman', slug: 'jobscraftman',
+    role: 'Rails 8 + Nuxt 4 · Claude · coming soon',
+    summary: 'An AI job-search coach — interview practice, cover letters and CV building in one place.',
+    body: "In active development: a single tool for the whole job hunt. Practice interviews at the difficulty you choose and get scored, per-question feedback; generate and refine tailored cover letters; build an ATS-friendly CV and score it against a real job description. Claude powers the coaching; a Rails 8 API and a credit ledger keep the cost of all that AI honest. Built solo, launching soon.",
+    stack: ['Rails 8', 'Nuxt 4', 'Claude Sonnet 4.6', 'Claude Haiku 4.5', 'Prawn'],
+    caseStudy: {
+      tagline:
+        'An AI coach for the whole job hunt — interview practice, cover letters and CV building in one place. Built solo on Rails 8 and Nuxt 4, launching soon.',
+      facts: [
+        ['Status', 'In active development — launching soon'],
+        ['Role', 'Solo — product, design, frontend, backend, ops'],
+        ['Frontend', 'Nuxt 4 · Vue 3 · TypeScript on Vercel'],
+        ['Backend', 'Rails 8 API-only · PostgreSQL · Puma'],
+        ['AI', 'Claude Sonnet 4.6 (generation) · Haiku 4.5 (refinements)'],
+        ['Deploy', 'Kamal 2 to DigitalOcean · managed Postgres'],
+      ],
+      sections: [
+        {
+          heading: 'What it does',
+          body:
+            "JobsCraftman puts the three things a job seeker actually needs into one tool. You can practice an interview — preset questions at easy, medium or hard, or tailored to a role or a pasted job description — and get a score and specific feedback on each answer. You can write a cover letter and refine it with plain-language instructions. And you can build a CV from a reusable profile, get AI suggestions to sharpen it, and score it against a job description for ATS fit.\n\nIt's aimed at active job seekers — early-career, career changers, returners — and it's English at launch, built to add more languages.",
+        },
+        {
+          heading: 'Two models, picked per job',
+          body:
+            "The coaching runs on Claude, but not one model for everything. The expensive, high-quality work — generating an interview with model answers, scoring a CV against a job description — uses Sonnet 4.6. The cheaper, high-frequency work — rewriting a cover-letter line, polishing a CV bullet — uses Haiku 4.5. Matching the model to the job is the difference between a tool that's pleasant to use and one that's too expensive to run.\n\nA whole interview — the question list and a strong answer for each — is generated in a single call and stored, so the user can work through it without burning a request per question. Per-answer feedback is then a small, focused call rather than re-sending the entire transcript.",
+        },
+        {
+          heading: 'Credits, not surprises',
+          body:
+            "AI features cost money on every use, so JobsCraftman runs on an append-only credit ledger rather than ad-hoc metering. Each paid action — generate an interview, improve a CV, score it against a JD — costs a credit; the balance is always the sum of the ledger, never a counter that can drift. Free accounts start with a few credits; the paid tier tops up monthly.\n\nEvery credit spend is wrapped in a transaction with the AI call, so a failed generation rolls the credit back instead of charging for nothing. A per-user daily spend ceiling sits on top as a hard stop, and an ATS score is cached against a hash of the CV and the job description so re-viewing an unchanged result never costs a second credit.",
+        },
+        {
+          heading: 'The foundations',
+          body:
+            "Underneath the AI is the unglamorous work that makes a product trustworthy: JWT auth with per-device sessions, email verification before anything can be spent, rate limiting, a full audit log of every meaningful action, GDPR export and soft-delete, and error tracking wired in from the start. Cover letters and CVs render to PDF server-side with Prawn — pure Ruby, no headless browser.\n\nIt deploys to DigitalOcean with Kamal 2 and a managed Postgres instance, with background jobs and caching both running on Postgres rather than a separate Redis. It's the same zero-to-one-hundred pattern as my other products: I own the product decisions, both halves of the code, and the operational details — here, before the public launch rather than after.",
+        },
+      ],
+    },
+  },
+  {
     era: 'current', now: true, feature: true, client: 'Wordy', slug: 'wordy',
     role: 'Rails 8 + Nuxt 4 · Claude · ElevenLabs',
     summary: 'A calm vocabulary lookup & learning tool, built solo.',
@@ -82,12 +123,46 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    era: 'current', now: true, feature: true, client: 'YazbirDilekçe',
+    era: 'current', now: true, feature: true, client: 'YazbirDilekçe', slug: 'yazbirdilekce',
     role: 'Rails · Claude · PDF export',
     summary: 'AI-powered Turkish petition writer — describe it casually, get a formal letter.',
     body: "An everyday problem turned into a product: Turkish bureaucracy expects a very specific tone and format that almost nobody learns properly. Users describe their situation in plain language — a consumer complaint, a resignation, a municipal issue — and get back a properly formatted official petition with the right address and institutional tone, ready to export as PDF. Claude does the language; the rest is mine.",
     link: 'https://www.yazbirdilekce.com',
-    stack: ['Rails', 'Claude API', 'PDF'],
+    stack: ['Rails 8', 'Nuxt 4', 'Claude Haiku 4.5', 'pdfmake', 'docx'],
+    caseStudy: {
+      tagline:
+        'A Turkish petition writer that turns a few plain sentences into a correctly formatted official letter — Claude writes the prose, and a Rails API enforces the bureaucratic form Turkish offices expect.',
+      facts: [
+        ['Role', 'Solo — product, design, frontend, backend, ops'],
+        ['Frontend', 'Nuxt 4 · Vue 3 · TypeScript · Bulma on Vercel'],
+        ['Backend', 'Rails 8 API-only · PostgreSQL · Puma'],
+        ['AI', 'Claude Haiku 4.5 with strict JSON output'],
+        ['Export', 'PDF (pdfmake, embedded fonts) · Word (docx)'],
+        ['Deploy', 'Kamal 2 to DigitalOcean · managed Postgres'],
+      ],
+      sections: [
+        {
+          heading: 'The problem',
+          body:
+            "Turkish officialdom expects a very specific register and layout for a \"resmî dilekçe\" — a formal petition — and almost nobody is taught how to write one. People know what they want to say; they don't know how to say it so an institution will take it seriously.\n\nYazbirDilekçe closes that gap. You pick a category — municipal, rent, resignation, consumer complaint, school, objection — describe your situation in everyday Turkish, and get back a respectful, correctly structured petition you can edit, copy, or download.",
+        },
+        {
+          heading: 'Claude writes the prose; the server owns the form',
+          body:
+            "The language generation runs on Claude Haiku 4.5, but the model deliberately does not get the last word on structure. It returns strict JSON — two to four body paragraphs plus a closing line — and is told never to invent facts, dates, names or addresses, and never to rename the institution the petition is addressed to.\n\nEverything that has a single correct form, the server computes deterministically rather than trusting the model: the date, the addressee block, and the closing salutation (the petition picks the right honorific depending on whether it's addressed to a government body or a private company). The JSON parser is intentionally forgiving — it copes with code fences and stray prose and falls back gracefully — so a slightly off response still produces a usable letter.",
+        },
+        {
+          heading: 'Getting Turkish right',
+          body:
+            "Turkish has rules that trip up naive code. Uppercasing is locale-sensitive — a lowercase \"i\" must become \"İ\", not \"I\" — so the addressee line is upper-cased with Turkic casing rather than the default. The address block also needs the correct dative suffix grammatically attached to the institution name, which the server adds based on how the name ends.\n\nThe app also tells the user what's missing. When the description lacks a fact the petition needs — a street name, a date, an order number — the model flags it, and a short checklist of documents to attach is suggested per category. The petition is only as good as the facts behind it, and the tool nudges the user toward a complete one.",
+        },
+        {
+          heading: 'Export and the rest of the stack',
+          body:
+            "The finished petition exports as a print-ready PDF (built with pdfmake, with the display fonts embedded so it looks identical everywhere) or as a Word document (built with docx, referencing system fonts so Turkish characters always render). Anonymous users keep their history in the browser; signed-in users get it stored server-side.\n\nUnder the hood: a Rails 8 API on PostgreSQL, JWT auth, IP-based rate limiting, and a per-user monthly quota plus a hard daily spend ceiling on the AI. Every generation — anonymous or not, success or failure — is logged with a hashed IP (never the raw address), token counts and latency, so cost and abuse can be reviewed without storing anyone's personal data. It ships to DigitalOcean with Kamal 2.",
+        },
+      ],
+    },
   },
   {
     era: 'current', now: true, client: 'Canadian healthcare integration',

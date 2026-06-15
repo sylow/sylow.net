@@ -36,9 +36,10 @@ Each project can have its own server-rendered SEO landing page at `/work/<slug>`
 - **Sitemap:** each published page must be mirrored manually in the `sitemap.urls` array in `nuxt.config.ts` (the sitemap config runs in nitro context and can't import `app/data` cleanly). To publish: add a `slug`, add a `caseStudy` (optional), add the `/work/<slug>` line to the sitemap.
 
 ### Published / planned case studies
-- **Wordy** (`slug: 'wordy'`) — **published.** Solo Rails 8 + Nuxt 4 vocabulary tool; Claude Sonnet 4.5 (tool-use JSON, prompt caching), ElevenLabs TTS, Stripe, JWT, Kamal 2 → DigitalOcean. Source repo: `../../wordy` (Rails API in `backend/`, Nuxt in `frontend/`; rich `CLAUDE.md` + `docs/` there). Case-study copy is grounded in that codebase — re-verify against it before editing technical claims.
-- **JobsCraftman** — *coming soon, not yet published.* Source repo: `../../jobscraftman`. Investigate that repo before writing copy.
-- **Dilekçe / YazbirDilekçe** (already live at yazbirdilekce.com) — *to be published.* Source repo: `../../dilekce`. Investigate that repo before writing copy.
+All three case studies are **published**. Each copy is grounded in the actual source repo (Rails API in `backend/`, Nuxt in `frontend/`, plus a rich `CLAUDE.md` in each) — re-verify against that codebase before editing any technical claim.
+- **Wordy** (`slug: 'wordy'`, live at trywordy.com) — solo Rails 8 + Nuxt 4 vocabulary tool; Claude Sonnet 4.5 (tool-use JSON, prompt caching), ElevenLabs TTS, Stripe, JWT, Kamal 2 → DigitalOcean. Source: `../../wordy`.
+- **YazbirDilekçe** (`slug: 'yazbirdilekce'`, live at yazbirdilekce.com) — Turkish petition writer; Claude Haiku 4.5 with strict JSON output, server-side Turkish formatting (Turkic uppercase + dative suffixes), PDF via pdfmake + Word via docx, hashed-IP audit trail. Source: `../../dilekce`.
+- **JobsCraftman** (`slug: 'jobscraftman'`, **not yet live** — case study is framed as "coming soon", so the entry has no `link`) — AI job-search coach (interview practice, cover letters, CV/ATS); Claude Sonnet 4.6 + Haiku 4.5, append-only credit ledger, Prawn PDFs, Kamal 2 → DigitalOcean. Stripe is scaffolded but not yet wired — do not claim billing is live. Source: `../../jobscraftman`.
 
 ## Commands
 - `npm run dev` — dev server (`localhost:3000`)
