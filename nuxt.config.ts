@@ -31,7 +31,12 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    urls: [{ loc: '/', changefreq: 'monthly', priority: 1.0 }],
+    // Homepage + published case studies. Add a `slug` in app/data/projects.ts
+    // to publish a /work/<slug> page; mirror it here so it enters the sitemap.
+    urls: [
+      { loc: '/', changefreq: 'monthly', priority: 1.0 },
+      { loc: '/work/wordy', changefreq: 'monthly', priority: 0.8 },
+    ],
   },
 
   robots: {

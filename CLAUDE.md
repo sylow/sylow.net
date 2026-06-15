@@ -26,6 +26,20 @@ The Vercel project (`sylow.net`, projectId `prj_hPyz4Tt65xZUUOk4YYEb0vrMVd9A`, o
 ## Content editing
 **Project list** is `app/data/projects.ts`. Each entry has `link?: string` for the "Visit" CTA. The visible link label is derived from the href via `linkLabel(url)` — do **not** hardcode the display URL anywhere. (This was a bug in v3 where every project's link said "trywordy.com" regardless of href.)
 
+## Case-study pages (`/work/<slug>`)
+Each project can have its own server-rendered SEO landing page at `/work/<slug>`. This is opt-in per project, for intent-specific search coverage — do **not** publish a page for every project (thin pages hurt ranking).
+
+- **Route:** `app/pages/work/[slug].vue` (file-based dynamic route). Looks up the project via `projectBySlug()`; unknown slugs `throw createError(404)`.
+- **Opt-in:** a project is published only when it has a `slug?: string` in `app/data/projects.ts`. `PUBLISHED_PROJECTS` / `projectBySlug()` helpers live in the same file.
+- **Rich content (optional):** the `caseStudy?: CaseStudy` field (`tagline`, `facts`, ordered `sections`) drives a facts panel + `<h2>` narrative sections. Without it the page falls back to the plain `body`. The homepage timeline (`SiteWork.vue`) reads only `body`/`summary`/`stack`, so adding a `caseStudy` never affects the homepage.
+- **Per-page SEO:** unique title/description/canonical, `og:type=article`, plus JSON-LD (`CreativeWork` with `author`/`creator` → the site's `#person` `@id`, and a `BreadcrumbList`).
+- **Sitemap:** each published page must be mirrored manually in the `sitemap.urls` array in `nuxt.config.ts` (the sitemap config runs in nitro context and can't import `app/data` cleanly). To publish: add a `slug`, add a `caseStudy` (optional), add the `/work/<slug>` line to the sitemap.
+
+### Published / planned case studies
+- **Wordy** (`slug: 'wordy'`) — **published.** Solo Rails 8 + Nuxt 4 vocabulary tool; Claude Sonnet 4.5 (tool-use JSON, prompt caching), ElevenLabs TTS, Stripe, JWT, Kamal 2 → DigitalOcean. Source repo: `../../wordy` (Rails API in `backend/`, Nuxt in `frontend/`; rich `CLAUDE.md` + `docs/` there). Case-study copy is grounded in that codebase — re-verify against it before editing technical claims.
+- **JobsCraftman** — *coming soon, not yet published.* Source repo: `../../jobscraftman`. Investigate that repo before writing copy.
+- **Dilekçe / YazbirDilekçe** (already live at yazbirdilekce.com) — *to be published.* Source repo: `../../dilekce`. Investigate that repo before writing copy.
+
 ## Commands
 - `npm run dev` — dev server (`localhost:3000`)
 - `npm run build` — production build into `.vercel/output/` (ready for `vercel deploy --prebuilt`)
