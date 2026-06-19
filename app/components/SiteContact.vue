@@ -1,18 +1,6 @@
 <script setup lang="ts">
-// Direct contact details are split and only assembled on user interaction so they
-// aren't scrapable strings in the static bundle or initial DOM.
-const revealed = ref(false)
-const parts = computed(() => {
-  const u = ['Z29raGFu', 'c3lsb3c=', 'bmV0'].map((s) => atob(s))
-  const digits = [54, 54, 57, 50, 55, 55, 53, 53, 57, 52, 56]
-    .map((c) => String.fromCharCode(c)).join('')
-  return {
-    email: `${u[0]}@${u[1]}.${u[2]}`,
-    phone: `+${digits}`,
-    wa: `https://wa.me/${digits}`,
-  }
-})
-
+// Direct contact (email/phone) is intentionally not exposed — the form is the
+// only contact channel, so visitors reach me without scrapable details on the page.
 const runtimeConfig = useRuntimeConfig()
 const FORM_ENDPOINT = runtimeConfig.public.formsEndpoint
 const MIN_NAME = 2
@@ -141,10 +129,10 @@ async function submit() {
       return
     }
     const data = await res.json().catch(() => null)
-    errorMsg.value = data?.error?.message || 'Something went wrong. Please email me directly.'
+    errorMsg.value = data?.error?.message || 'Something went wrong. Please try again in a moment.'
     status.value = 'error'
   } catch {
-    errorMsg.value = 'Network error. Please email me directly.'
+    errorMsg.value = 'Network error. Please try again in a moment.'
     status.value = 'error'
   }
 }
@@ -239,33 +227,6 @@ async function submit() {
         <AppIcon name="check" :size="18" :sw="2" />
         <span><em>Got it.</em> I'll be in touch within a day.</span>
       </div>
-
-      <div class="cta-divider"><span>or reach me directly</span></div>
-
-      <div v-if="!revealed" class="cta-actions">
-        <button
-          type="button"
-          class="wordy-btn wordy-btn--secondary"
-          @click="revealed = true"
-        >
-          Show direct contact
-        </button>
-      </div>
-      <template v-else>
-        <div class="cta-actions">
-          <a class="wordy-btn wordy-btn--secondary" :href="parts.wa" target="_blank" rel="noopener noreferrer">
-            <AppIcon name="whatsapp" :size="18" /> WhatsApp
-          </a>
-          <a class="wordy-btn wordy-btn--secondary" :href="`mailto:${parts.email}`">
-            <AppIcon name="mail" :size="17" /> Email
-          </a>
-        </div>
-        <p class="cta-mail label-mono" style="margin-top: 18px; color: var(--text-3);">
-          <a :href="`tel:${parts.phone}`" style="color: var(--text-2);">{{ parts.phone }}</a>
-          <span style="margin: 0 10px; color: var(--border-strong);">·</span>
-          <a :href="`mailto:${parts.email}`" style="color: var(--text-2);">{{ parts.email }}</a>
-        </p>
-      </template>
     </div>
   </div>
 </template>
