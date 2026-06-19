@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-01-01',
   future: { compatibilityVersion: 4 },
 
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/sitemap', '@nuxtjs/robots', '@vercel/analytics/nuxt'],
+  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/sitemap', '@nuxtjs/robots'],
 
   css: ['~/assets/css/tokens.css', '~/assets/css/components.css', '~/assets/css/site.css'],
 
@@ -19,6 +19,13 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       bodyAttrs: { class: 'wordy' },
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      script: [
+        { src: 'https://www.googletagmanager.com/gtag/js?id=G-62EX0EKMH1', async: true },
+        {
+          innerHTML:
+            "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-62EX0EKMH1');",
+        },
+      ],
     },
   },
 
