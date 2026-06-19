@@ -243,7 +243,7 @@ async function submit() {
         <div class="cta-actions">
           <button
             type="submit"
-            class="wordy-btn wordy-btn--primary wordy-btn--lg"
+            class="wordy-btn wordy-btn--secondary wordy-btn--lg"
             :disabled="status === 'submitting' || (submitAttempted && !isValid)"
           >
             <AppIcon name="mail" :size="17" />
@@ -264,15 +264,15 @@ async function submit() {
 
       <div v-if="CAL_LINK" class="cta-actions">
         <a
-          class="wordy-btn wordy-btn--secondary"
+          class="wordy-btn wordy-btn--primary wordy-btn--lg"
           :href="CAL_URL"
           target="_blank"
           rel="noopener noreferrer"
           @click="openCal"
         >
-          <AppIcon name="calendar" :size="17" /> Book a call
+          <AppIcon name="calendar" :size="18" /> Book a call
         </a>
-        <span class="cta-form-hint">A 30-minute intro call, free.</span>
+        <span class="cta-form-hint">A free 30-minute intro call — pick a time that works.</span>
       </div>
     </div>
   </div>
