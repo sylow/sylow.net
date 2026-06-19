@@ -3,6 +3,38 @@
 // only contact channel, so visitors reach me without scrapable details on the page.
 const runtimeConfig = useRuntimeConfig()
 const FORM_ENDPOINT = runtimeConfig.public.formsEndpoint
+
+// "Book a call" via Cal.com. CAL_URL is the full booking page (kept as the
+// no-JS fallback href); CAL_LINK is the "<user>/<event>" slug the embed needs.
+const CAL_URL = runtimeConfig.public.calUrl
+const CAL_LINK = computed(() => {
+  try { return new URL(CAL_URL).pathname.replace(/^\/+/, '') } catch { return '' }
+})
+
+// Load the Cal.com embed script once, then open the booking page in a popup
+// modal on click. Falls back to navigating to CAL_URL if the embed isn't ready.
+useHead({
+  script: [{
+    key: 'cal-embed',
+    innerHTML:
+      "(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){" +
+      "let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];" +
+      "d.head.appendChild(d.createElement('script')).src=A;cal.loaded=true}" +
+      "if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];" +
+      "api.q=api.q||[];if(typeof namespace==='string'){cal.ns[namespace]=cal.ns[namespace]||api;" +
+      "p(cal.ns[namespace],ar);p(cal,['initNamespace',namespace])}else p(cal,ar);return}p(cal,ar);" +
+      "})(window,'https://app.cal.com/embed/embed.js','init');" +
+      "Cal('init',{origin:'https://cal.com'});",
+  }],
+})
+
+function openCal(e: MouseEvent) {
+  const Cal = (window as unknown as { Cal?: (...a: unknown[]) => void }).Cal
+  if (!CAL_LINK.value || typeof Cal !== 'function') return // let the link navigate
+  e.preventDefault()
+  Cal('modal', { calLink: CAL_LINK.value })
+}
+
 const MIN_NAME = 2
 const MIN_MESSAGE = 20
 const MIN_SECONDS_ON_PAGE = 3
@@ -226,6 +258,21 @@ async function submit() {
       <div v-else class="cta-success" role="status">
         <AppIcon name="check" :size="18" :sw="2" />
         <span><em>Got it.</em> I'll be in touch within a day.</span>
+      </div>
+
+      <div v-if="CAL_LINK" class="cta-divider"><span>or pick a time</span></div>
+
+      <div v-if="CAL_LINK" class="cta-actions">
+        <a
+          class="wordy-btn wordy-btn--secondary"
+          :href="CAL_URL"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="openCal"
+        >
+          <AppIcon name="calendar" :size="17" /> Book a call
+        </a>
+        <span class="cta-form-hint">A 30-minute intro call, free.</span>
       </div>
     </div>
   </div>

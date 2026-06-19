@@ -2,7 +2,7 @@
 type IconName =
   | 'arrowRight' | 'arrowUpRight' | 'chevronDown' | 'mail'
   | 'sun' | 'moon' | 'wrench' | 'layers' | 'search' | 'compass'
-  | 'spark' | 'check' | 'package' | 'bolt' | 'whatsapp'
+  | 'spark' | 'check' | 'package' | 'bolt' | 'whatsapp' | 'calendar'
 
 const props = withDefaults(defineProps<{ name: IconName; size?: number; sw?: number }>(), {
   size: 18,
@@ -28,6 +28,7 @@ const props = withDefaults(defineProps<{ name: IconName; size?: number; sw?: num
     <template v-else-if="props.name === 'spark'"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" /></template>
     <template v-else-if="props.name === 'check'"><path d="M20 6L9 17l-5-5" /></template>
     <template v-else-if="props.name === 'package'"><path d="M21 8l-9-5-9 5 9 5 9-5z" /><path d="M3 8v8l9 5 9-5V8" /><path d="M12 13v8" /></template>
+    <template v-else-if="props.name === 'calendar'"><rect x="3" y="4.5" width="18" height="16" rx="2" /><path d="M3 9h18M8 2.5v4M16 2.5v4" /></template>
     <template v-else-if="props.name === 'bolt'"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" /></template>
     <template v-else-if="props.name === 'whatsapp'">
       <path d="M4 20l1.3-3.9A7.5 7.5 0 1112 19.5a7.4 7.4 0 01-3.8-1L4 20z" />

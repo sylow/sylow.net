@@ -71,6 +71,10 @@ export default defineNuxtConfig({
       // (e.g. http://localhost:3013/api/v1/forms/sylow.net/contact when
       // running the Rails API on your laptop).
       formsEndpoint: 'https://api.sylow.net/api/v1/forms/sylow.net/contact',
+      // Cal.com booking link for the "Book a call" button. Override with
+      // NUXT_PUBLIC_CAL_URL. The Cal embed needs just the "<user>/<event>" slug,
+      // which is derived from this URL in SiteContact.vue.
+      calUrl: 'https://cal.com/gokhan-arli/30min',
     },
   },
 
