@@ -20,11 +20,19 @@ export default defineNuxtConfig({
       bodyAttrs: { class: 'wordy' },
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
       script: [
-        { src: 'https://www.googletagmanager.com/gtag/js?id=G-62EX0EKMH1', async: true },
+        // Google Consent Mode v2 — deny everything by default. gtag.js loads,
+        // but stores no cookies and sends no measurement until the visitor
+        // grants consent (see useConsent / CookieConsent.vue). A previously
+        // saved 'granted' choice is replayed before config so accepted
+        // visitors are measured on first paint.
         {
           innerHTML:
-            "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-62EX0EKMH1');",
+            "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}" +
+            "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});" +
+            "try{if(localStorage.getItem('sylow-consent')==='granted')gtag('consent','update',{analytics_storage:'granted'});}catch(e){}" +
+            "gtag('js',new Date());gtag('config','G-62EX0EKMH1');",
         },
+        { src: 'https://www.googletagmanager.com/gtag/js?id=G-62EX0EKMH1', async: true },
       ],
     },
   },
