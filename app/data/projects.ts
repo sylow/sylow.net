@@ -32,7 +32,8 @@ export type CaseStudy = {
   // One line per fact in an at-a-glance panel, e.g. ['Role', 'Solo — design to deploy'].
   facts: Array<[label: string, value: string]>
   // Narrative sections rendered in order. `body` paragraphs split on blank lines.
-  sections: Array<{ heading: string; body: string }>
+  // Optional `bullets` render as an unordered list after the body.
+  sections: Array<{ heading: string; body: string; bullets?: string[] }>
 }
 
 // Selected work — newest first. `now` flags current/featured work.
@@ -42,17 +43,18 @@ export const PROJECTS: Project[] = [
     badge: 'In progress · my product',
     role: 'Rails 8 + Nuxt 4 · Claude · ElevenLabs',
     summary: 'A calm vocabulary lookup & learning tool, built solo.',
-    body: "Designed and built end-to-end. Paste a batch of words and get clean cards — definitions, real examples, synonyms you'd actually use, and natural text-to-speech pronunciation. Rails 8 API with a Nuxt 4 frontend; definitions powered by Claude, text-to-speech audio by ElevenLabs. Proof of what 0-to-100 looks like when I run the whole thing.",
+    body: "Designed and built end-to-end. Paste a batch of words and get clean cards — definitions, real examples, synonyms you'd actually use, and natural text-to-speech pronunciation. An opt-in Telegram coach drips daily spaced-repetition reviews straight into chat. Rails 8 API with a Nuxt 4 frontend; definitions powered by Claude, text-to-speech audio by ElevenLabs. Proof of what 0-to-100 looks like when I run the whole thing.",
     link: 'https://trywordy.com',
-    stack: ['Rails 8', 'Nuxt 4', 'PostgreSQL', 'Claude API', 'ElevenLabs TTS'],
+    stack: ['Rails 8', 'Nuxt 4', 'PostgreSQL', 'Claude API', 'ElevenLabs TTS', 'Telegram Bot API'],
     caseStudy: {
       tagline:
-        'A calm vocabulary tool built solo, from design to deploy — Claude generates the cards, ElevenLabs speaks them, and a Rails API keeps the cost of both under control.',
+        'A calm vocabulary tool built solo, from design to deploy — Claude generates the cards, ElevenLabs speaks them, a Telegram bot drips daily reviews, and a Rails API keeps the cost of it all under control.',
       facts: [
         ['Role', 'Solo — product, design, frontend, backend, ops'],
         ['Frontend', 'Nuxt 4 · Vue 3 · TypeScript on Vercel'],
         ['Backend', 'Rails 8 API-only · PostgreSQL · Puma'],
         ['AI', 'Claude Sonnet 4.5 (tool-use JSON) · ElevenLabs Multilingual v2'],
+        ['Daily coach', 'Telegram bot · spaced-repetition reviews in-chat'],
         ['Billing & auth', 'Stripe Checkout · JWT multi-device sessions'],
         ['Deploy', 'Kamal 2 to DigitalOcean · managed Postgres · zero-downtime'],
       ],
@@ -76,6 +78,22 @@ export const PROJECTS: Project[] = [
           heading: 'Pronunciation and the rest of the stack',
           body:
             "Pronunciation audio comes from ElevenLabs' multilingual model, cached per word and voice so each clip is generated once and reused forever; the free tier falls back to the browser's built-in speech. Auth is JWT with per-device sessions so a logout or password change can revoke a single device. Billing runs through Stripe Checkout and the Customer Portal, with webhooks as the source of truth for which tier a user is on.\n\nThe Rails API ships to a DigitalOcean droplet with Kamal 2 for zero-downtime deploys, backed by a managed Postgres instance and Amazon SES for mail — with SES bounce and complaint notifications flowing back through an SNS webhook to suppress dead addresses automatically.",
+        },
+        {
+          heading: 'A daily coach that lives in Telegram',
+          body:
+            "Looking words up is easy; coming back to review them is the hard part. So paying members can opt into a daily coach that sends a review straight to their Telegram, at the hour and on the cadence they choose — every day, weekdays only, or Mondays/Wednesdays/Fridays.\n\nThe whole review happens inside the chat. Each card shows the word, its pronunciation, definition and an example, with Again / Hard / Good / Easy buttons right there — no link back to the app, no separate reveal step. Tapping a grade advances that word's spaced-repetition schedule and records the review exactly as if it happened in the app, then edits the message in place. The bot reuses the same scheduling and word data the website already runs on, so progress is one shared picture whether you study in the browser or in the chat.\n\nA small set of in-chat commands covers the rest:",
+          bullets: [
+            'Pull a review card on demand, any time',
+            'Check your mastered, learning and due counts',
+            'Skip just today without pausing the coach',
+            'Pause and resume whenever life gets busy',
+          ],
+        },
+        {
+          heading: 'Built on the constraints of a bot',
+          body:
+            "A Telegram bot can't message someone first, so opting in is a deliberate handshake: the app mints a single-use, fifteen-minute link token and hands back a deep link; tapping it lets the bot bind the chat, and only the verified webhook is ever allowed to record which chat belongs to which account. The connection is never exposed to the browser — the app only ever knows whether a member is linked, not how to reach them.\n\nFrom inside the chat a small set of commands covers the rest — ask for a word on demand, check mastered/learning/due counts, skip a day, pause, or resume — and the daily send itself is driven by an hourly job that resolves each member's local time and only fires once per day per person, retrying cleanly if a send fails. It's the same theme as the rest of TryWordy: a feature that feels effortless to use, sitting on top of a fair amount of careful plumbing.",
         },
         {
           heading: 'Why it matters',

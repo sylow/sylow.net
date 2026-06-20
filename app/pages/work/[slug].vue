@@ -109,6 +109,9 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
           <section v-for="s in p.caseStudy.sections" :key="s.heading" class="case-section">
             <h2>{{ s.heading }}</h2>
             <p v-for="(para, i) in paras(s.body)" :key="i">{{ para }}</p>
+            <ul v-if="s.bullets" class="case-list">
+              <li v-for="(b, i) in s.bullets" :key="i">{{ b }}</li>
+            </ul>
           </section>
         </template>
 
@@ -208,6 +211,14 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
 .case-section p {
   line-height: 1.7;
   margin: 0 0 14px;
+}
+.case-list {
+  margin: 0 0 14px;
+  padding-left: 1.2em;
+}
+.case-list li {
+  line-height: 1.7;
+  margin-bottom: 6px;
 }
 .case-stack-head {
   font-size: 1.35rem;
