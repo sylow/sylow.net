@@ -2,7 +2,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-01-01',
   future: { compatibilityVersion: 4 },
 
-  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  // @nuxtjs/sitemap must load before @nuxt/content for the content integration
+  // (asSitemapCollection in content.config.ts) to register blog posts.
+  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxtjs/sitemap', '@nuxtjs/robots', '@nuxt/content'],
 
   css: ['~/assets/css/tokens.css', '~/assets/css/components.css', '~/assets/css/site.css'],
 
@@ -53,6 +55,7 @@ export default defineNuxtConfig({
       { loc: '/work/wordy', changefreq: 'monthly', priority: 0.8 },
       { loc: '/work/yazbirdilekce', changefreq: 'monthly', priority: 0.8 },
       { loc: '/work/jobcraftsman', changefreq: 'monthly', priority: 0.8 },
+      { loc: '/blog', changefreq: 'weekly', priority: 0.9 },
     ],
   },
 

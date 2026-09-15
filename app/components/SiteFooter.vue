@@ -22,6 +22,7 @@ const year = new Date().getFullYear()
             v-for="[id, l] in links" :key="id"
             @click="emit('nav', id)"
           >{{ l }}</a>
+          <NuxtLink to="/blog">Writing</NuxtLink>
         </nav>
         <button
           class="nav-toggle"

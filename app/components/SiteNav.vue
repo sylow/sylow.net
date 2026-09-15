@@ -19,6 +19,7 @@ const sections = [
           class="nav-link"
           @click="emit('nav', s.id)"
         >{{ s.label }}</a>
+        <NuxtLink class="nav-link" to="/blog">Writing</NuxtLink>
         <span class="nav-divider" />
         <a class="nav-link nav-link--cta" @click="emit('nav', 'contact')">Contact</a>
         <button
