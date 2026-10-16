@@ -13,7 +13,7 @@ So I typed this into Claude Code, typos and all:
 
 > "I like this exercise but I would like to see a small keyboard at the bottom right when I want, it should be colemak keyboard as a reference when I forget"
 
-By midnight the trainer had a reference keyboard, a list of my worst keys, a mode that drills them, and a streak counter. That came to eight commits on a project first written in 2012. This morning I opened a pull request to the original authors.
+By midnight the trainer had a reference keyboard, a list of my worst keys, a mode that drills them, and a streak counter. That came to eight commits on my fork of a project first written in 2012. This morning I opened a pull request to the original authors.
 
 I never stopped practising for long.
 
@@ -25,7 +25,11 @@ I don't know my exact speed. I do know it's gone up about 20%.
 
 Colemak keeps a few QWERTY keys where they were and moves the rest. Your fingers know exactly where every letter is, and they're wrong about most of them.
 
-I practise on [Keyzen](https://github.com/first20hours/keyzen-colemak), a small browser trainer that drills one new key at a time and unlocks the next one once you stop missing. It's good. It's also from another era of the web, and it doesn't tell you much.
+I tried a lot of online typing trainers before I settled on one. I ended up with the simplest of them: [Keyzen Colemak](https://github.com/first20hours/keyzen-colemak), a single page that drills one new key at a time and unlocks the next one once you stop missing.
+
+It was written in 2012. Rye Terrell built the original [Keyzen](https://github.com/wwwtyro/keyzen), and Josh Kaufman, the author of *The First 20 Hours*, adapted it for Colemak a week later, with a key order designed for learning the layout. Their trainer is still the heart of it, and everything I added sits on top of their work. Thank you, both.
+
+It's good. I just wanted a bit more from it. It's from another era of the web, and it doesn't tell you much.
 
 Until Sunday it was something I used, never something I'd change. Someone else's code, on someone else's site.
 
