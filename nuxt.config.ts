@@ -1,3 +1,5 @@
+import type { FileAfterParseHook } from '@nuxt/content'
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-01',
   future: { compatibilityVersion: 4 },
@@ -83,5 +85,14 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
+  },
+
+  hooks: {
+    // Reading time for blog posts, from the raw markdown (~220 wpm).
+    'content:file:afterParse'(ctx: FileAfterParseHook) {
+      if (ctx.collection.name !== 'blog' || typeof ctx.file.body !== 'string') return
+      const words = ctx.file.body.split(/\s+/).filter(Boolean).length
+      ctx.content.readingTime = Math.max(1, Math.round(words / 220))
+    },
   },
 });

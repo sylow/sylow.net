@@ -39,6 +39,7 @@ useSeoMeta({
   twitterDescription: p.description,
   twitterImage: ogImage,
   articlePublishedTime: p.date,
+  articleSection: BLOG_CATEGORY_LABELS[p.category],
 })
 
 useHead({
@@ -58,6 +59,7 @@ useHead({
             image: ogImage,
             datePublished: p.date,
             keywords: p.tags,
+            articleSection: BLOG_CATEGORY_LABELS[p.category],
             inLanguage: 'en',
             author: { '@id': `${SITE_URL}/#person` },
             publisher: { '@id': `${SITE_URL}/#person` },
@@ -96,7 +98,13 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
         </nav>
 
         <header class="post-head">
-          <time class="post-date" :datetime="p.date">{{ formatDate(p.date) }}</time>
+          <p :class="['post-meta', `cat-${p.category}`]">
+            <span class="cat-dot">{{ BLOG_CATEGORY_LABELS[p.category] }}</span>
+            <span v-if="p.readingTime" aria-hidden="true">·</span>
+            <span v-if="p.readingTime">{{ p.readingTime }} min read</span>
+            <span aria-hidden="true">·</span>
+            <time :datetime="p.date">{{ formatDate(p.date) }}</time>
+          </p>
           <h1 class="post-title">
             {{ p.title }}
             <span v-if="p.draft" class="wordy-badge">draft</span>
@@ -165,7 +173,12 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
 .post-head {
   margin-bottom: 32px;
 }
-.post-date {
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+  margin: 0;
   font-family: var(--font-mono, monospace);
   font-size: 0.85rem;
   color: var(--text-3);

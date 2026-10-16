@@ -2,6 +2,7 @@
 title: "Why I'd rather work with an AI agent than a junior developer"
 description: "I planted ten bugs in a live codebase to test my AI review pipeline. It found every expensive one and missed every obvious one — and that pattern is exactly the point."
 date: "2026-09-08"
+category: development
 tags: ["ai-workflow"]
 ---
 

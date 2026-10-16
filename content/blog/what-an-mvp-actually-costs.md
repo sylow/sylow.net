@@ -2,6 +2,7 @@
 title: "What an MVP actually costs in 2026"
 description: "Eight weeks, $128 a month, and 320 hours of my time. I built a real subscription product with AI and kept the receipts — including my own estimate of what it would have cost the old way."
 date: "2026-09-15"
+category: business
 image: /blog/what-an-mvp-actually-costs.png
 tags: ["pricing", "clients", "mvp"]
 ---

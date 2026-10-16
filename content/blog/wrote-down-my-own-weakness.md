@@ -2,6 +2,7 @@
 title: "I wrote down my own weakness, then walked into it three times"
 description: "Before a consulting engagement at a large bank, I had an AI role-play the stakeholders and grade my answers. It found a reflex I had already documented in my own preparation notes — and had no ability to stop."
 date: "2026-09-23"
+category: development
 image: /blog/wrote-down-my-own-weakness.png
 tags: ["ai-workflow", "consulting"]
 ---

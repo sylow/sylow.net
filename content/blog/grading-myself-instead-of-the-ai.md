@@ -2,6 +2,7 @@
 title: "I graded myself instead of the AI for a week"
 description: "I spent a week grading my own delegation instead of blaming the model. The AI passed. I didn't — and it changed how I write every request."
 date: "2026-09-15"
+category: development
 tags: ["ai-workflow"]
 ---
 

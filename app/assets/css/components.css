@@ -155,3 +155,26 @@
   background: var(--accent);
   transform: translateY(-7px);
 }
+
+/* Blog category colour + dot label (/blog list and post header).
+   Set `cat-<category>` on an ancestor; values match content.config.ts. */
+.cat-business { --cat: #B4691F; }
+.cat-development { --cat: #2F6FB3; }
+.cat-fun { --cat: #B83D7A; }
+[data-theme='dark'] .cat-business { --cat: #E3A35F; }
+[data-theme='dark'] .cat-development { --cat: #7DB0E8; }
+[data-theme='dark'] .cat-fun { --cat: #E68AB8; }
+.cat-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--cat, var(--accent));
+  font-weight: 600;
+}
+.cat-dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}

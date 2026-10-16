@@ -2,6 +2,7 @@
 title: "Pay by feature, not by hour"
 description: "After twenty years of hourly billing, I dropped the hour. A feature has a price, you pay when it works — and the same price now buys tests, documentation, a real UI, and delivery in days."
 date: "2026-09-10"
+category: business
 tags: ["pricing", "clients"]
 ---
 

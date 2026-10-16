@@ -86,12 +86,18 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
         <ul v-if="posts?.length" class="post-list">
           <li v-for="post in posts" :key="post.path" class="post-item">
             <NuxtLink :to="post.path" class="post-link">
-              <time class="post-date" :datetime="post.date">{{ formatDate(post.date) }}</time>
-              <h2 class="post-title">
-                {{ post.title }}
-                <span v-if="post.draft" class="wordy-badge">draft</span>
-              </h2>
-              <p class="post-desc">{{ post.description }}</p>
+              <div>
+                <h2 class="post-title">
+                  {{ post.title }}
+                  <span v-if="post.draft" class="wordy-badge">draft</span>
+                </h2>
+                <p class="post-desc">{{ post.description }}</p>
+              </div>
+              <aside :class="['post-side', `cat-${post.category}`]">
+                <span class="cat-dot">{{ BLOG_CATEGORY_LABELS[post.category] }}</span>
+                <span v-if="post.readingTime">{{ post.readingTime }} min read</span>
+                <time :datetime="post.date">{{ formatDate(post.date) }}</time>
+              </aside>
             </NuxtLink>
           </li>
         </ul>
@@ -134,19 +140,27 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
   border-bottom: 1px solid var(--border);
 }
 .post-link {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 32px;
   padding: 24px 0;
   text-decoration: none;
   color: inherit;
 }
-.post-date {
+.post-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding-top: 4px;
+  text-align: right;
   font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-3);
 }
 .post-title {
   font-size: 1.3rem;
-  margin: 6px 0 8px;
+  margin: 0 0 8px;
   transition: color 0.15s ease;
 }
 .post-link:hover .post-title {
@@ -156,6 +170,19 @@ const onNav = (id: string) => navigateTo(id === 'top' ? '/' : `/#${id}`)
   line-height: 1.6;
   color: var(--text-2);
   margin: 0;
+}
+@media (max-width: 600px) {
+  .post-link {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .post-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    text-align: left;
+  }
 }
 .post-empty {
   color: var(--text-3);

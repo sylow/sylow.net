@@ -2,6 +2,7 @@
 title: "I fixed my typing trainer in the middle of a lesson"
 description: "I was learning Colemak on a typing trainer from 2012. Every time it annoyed me, I told Claude Code. By midnight it had a reference keyboard, a weak-key report and a streak counter, and I never stopped practising for long."
 date: "2026-10-16"
+category: fun
 image: /blog/fixing-the-trainer-mid-lesson.png
 tags: ["ai-workflow"]
 ---
