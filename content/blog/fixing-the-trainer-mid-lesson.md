@@ -28,6 +28,10 @@ I practise on [Keyzen](https://github.com/first20hours/keyzen-colemak), a small 
 
 Until Sunday it was something I used, never something I'd change. Someone else's code, on someone else's site.
 
+Not because I couldn't. I've been a developer for twenty years. But making it work the way I wanted would have cost me evenings, and a feature had to be worth more than the time I'd spend building it. A reference keyboard for a hobby never was. So I put up with the tool as it was, like everyone does.
+
+That math has changed. Now I have a developer agent next to me. I tell it what I want, it builds it, and it costs me a few dollars. I get exactly what I want, the way I want it, and I stay in the lesson.
+
 ## My design review was one letter
 
 Claude didn't build me one keyboard. It built four.
